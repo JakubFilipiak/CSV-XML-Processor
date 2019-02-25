@@ -62,7 +62,7 @@ public class DBConnection {
         statement.executeUpdate(sqlCreateCustomersTable);
         statement.executeUpdate(sqlCreateContactsTable);
 
-        System.out.println("Tabele utworzone");
+        //System.out.println("Tabele utworzone");
     }
 
     public boolean establishConnection(DBAccessData dbAccessData) {

@@ -26,16 +26,16 @@ public class XMLHandler extends DefaultHandler {
     private List<String> jabbers = new ArrayList<>();
     private List<String> otherContacts = new ArrayList<>();
 
-    private final String personsTag = "persons";
-    private final String personTag = "person";
-    private final String nameTag = "name";
-    private final String surnameTag = "surname";
-    private final String ageTag = "age";
-    private final String cityTag = "city";
-    private final String contactsTag = "contacts";
-    private final String emailTag = "email";
-    private final String phoneTag = "phone";
-    private final String jabberTag = "jabber";
+    private final String PERSONS_TAG = "persons";
+    private final String PERSON_TAG = "person";
+    private final String NAME_TAG = "name";
+    private final String SURNAME_TAG = "surname";
+    private final String AGE_TAG = "age";
+    private final String CITY_TAG = "city";
+    private final String CONTACTS_TAG = "contacts";
+    private final String EMAIL_TAG = "email";
+    private final String PHONE_TAG = "phone";
+    private final String JABBER_TAG = "jabber";
 
     DBAccessData dbAccessData;
 
@@ -47,10 +47,10 @@ public class XMLHandler extends DefaultHandler {
     @Override
     public void startElement(String uri, String localName, String qName, Attributes attributes) {
 
-        if (qName.equalsIgnoreCase(personTag)) {
+        if (qName.equalsIgnoreCase(PERSON_TAG)) {
             person = new Person();
         }
-        if (qName.equalsIgnoreCase(contactsTag)) {
+        if (qName.equalsIgnoreCase(CONTACTS_TAG)) {
             contacts = new Contacts();
         }
     }
@@ -65,31 +65,31 @@ public class XMLHandler extends DefaultHandler {
     public void endElement(String uri, String localName, String qName) {
 
         switch (qName) {
-            case nameTag:
+            case NAME_TAG:
                 person.setName(tmpValue);
                 break;
-            case surnameTag:
+            case SURNAME_TAG:
                 person.setSurname(tmpValue);
                 break;
-            case ageTag:
+            case AGE_TAG:
                 person.setAge(Integer.parseInt(tmpValue));
                 break;
-            case cityTag:
+            case CITY_TAG:
 
                 break;
-            case contactsTag:
+            case CONTACTS_TAG:
                 person.setContacts(contacts);
                 break;
-            case phoneTag:
+            case PHONE_TAG:
                 phones.add(tmpValue);
                 break;
-            case emailTag:
+            case EMAIL_TAG:
                 emails.add(tmpValue);
                 break;
-            case jabberTag:
+            case JABBER_TAG:
                 jabbers.add(tmpValue);
                 break;
-            case personTag:
+            case PERSON_TAG:
                 person.getContacts().setPhones(phones);
                 person.getContacts().setEmails(emails);
                 person.getContacts().setJabbers(jabbers);
@@ -102,7 +102,7 @@ public class XMLHandler extends DefaultHandler {
                 jabbers.clear();
                 otherContacts.clear();
                 break;
-            case personsTag:
+            case PERSONS_TAG:
 
                 break;
             default:
